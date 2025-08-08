@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Histórico de desempenho do aluno - Dashboard de Avaliações Escolares">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Histórico do Aluno - Dashboard de Avaliações</title>
+    <link rel="stylesheet" href="student_style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <header role="banner">
+        <div class="header-content">
+            <h1>Histórico de Desempenho</h1>
+            <h2 id="student-name" aria-live="polite">Carregando...</h2>
+            <button id="back-button" type="button" class="back-button" onclick="window.close()" aria-label="Fechar janela e voltar">
+                ← Voltar
+            </button>
+        </div>
+    </header>
+    
+    <main id="main-content" role="main">
+        <section class="student-info" role="region" aria-labelledby="info-heading">
+            <h3 id="info-heading" class="sr-only">Informações do Aluno</h3>
+            <div id="info-container" class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Escola (Mais Recente):</span>
+                    <span id="student-school" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Etapa (Mais Recente):</span>
+                    <span id="student-year" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Turma (Mais Recente):</span>
+                    <span id="student-turma" class="info-value">-</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="summary-section" role="region" aria-labelledby="summary-heading">
+            <h3 id="summary-heading" class="sr-only">Resumo do Desempenho</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="total-evaluations">0</span>
+                    <span class="stat-label" id="total-evaluations-label">Total de Avaliações (Geral)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="improvement-trend">-</span>
+                    <span class="stat-label" id="improvement-trend-label">Tendência (Geral)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="progression-section" role="region" aria-labelledby="progression-heading">
+            <h3 id="progression-heading">Progressão de Desempenho</h3>
+            <div class="view-controls">
+                <div class="filter-group">
+                    <label for="area-filter">Filtrar por Área de Conhecimento:</label>
+                    <select id="area-filter">
+                        <option value="todas">Todas as Áreas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="progression-chart" aria-label="Gráfico de linhas mostrando a progressão do aluno ao longo do tempo"></canvas>
+            </div>
+        </section>
+
+        <section class="history-section" role="region" aria-labelledby="history-heading">
+            <h3 id="history-heading">Histórico Detalhado de Avaliações</h3>
+            <div id="history-table-container" role="region" aria-live="polite" tabindex="0">
+                </div>
+        </section>
+        
+        <div id="error-message" class="error-message" style="display: none;" role="alert">
+            <span class="icon" aria-hidden="true">⚠️</span>
+            <div class="message-content">
+                <h4>Erro ao carregar dados</h4>
+                <p id="error-details">Ocorreu um erro ao carregar os dados do aluno.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer role="contentinfo">
+        <p>&copy; 2025 Sistema de Avaliação Educacional | Secretaria Municipal de Educação de Aripuanã</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="student_script.js"></script>
+</body>
+</html>

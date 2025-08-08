@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Alunos</title>
+    <link rel="stylesheet" href="admin_style.css"> 
+</head>
+<body>
+    <header role="banner">
+        <div class="header-content">
+            <h1>Área de Gestão</h1>
+            <h2 id="page-title">Alunos Cadastrados</h2>
+            <button class="back-button" onclick="window.location.href='/painel_gestao.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>
+                Voltar ao Painel
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="management-section">
+            <div class="section-header">
+                <h3>Todos os Alunos</h3>
+                <div class="search-container"><input type="text" id="search-aluno-input" placeholder="Buscar por nome ou INEP..."></div>
+                <button id="add-student-btn" class="action-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+                    Adicionar Novo Aluno
+                </button>
+            </div>
+            <div id="alunos-table-container"><p>Carregando lista de alunos...</p></div>
+        </section>
+    </main>
+
+    <div id="student-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modal-title">Adicionar Novo Aluno</h3>
+            <form id="student-form">
+                <div class="form-grid">
+                    <div class="form-group"><label for="modal-nome_aluno">Nome Completo *</label><input type="text" id="modal-nome_aluno" name="nome_aluno" required></div>
+                    <div class="form-group"><label for="modal-inep_aluno">INEP *</label><input type="text" id="modal-inep_aluno" name="inep_aluno" required placeholder="Digite os 12 números do INEP" pattern="\d{12}" title="O INEP deve conter exatamente 12 números." maxlength="12"></div>
+                    <div class="form-group"><label for="modal-data_nascimento">Data de Nascimento</label><input type="date" id="modal-data_nascimento" name="data_nascimento"></div>
+                    <div class="form-group"><label for="modal-nome_mae">Nome da Mãe</label><input type="text" id="modal-nome_mae" name="nome_mae"></div>
+                    <div class="form-group"><label for="modal-cor_raca">Cor/Raça</label><select id="modal-cor_raca" name="cor_raca"><option value="Não Declarada">Não Declarada</option><option value="Branca">Branca</option><option value="Parda">Parda</option><option value="Preta">Preta</option><option value="Indígena">Indígena</option><option value="Amarela">Amarela</option></select></div>
+                    <div class="form-group"><label for="modal-beneficiario_social">Beneficiário Social?</label><select id="modal-beneficiario_social" name="beneficiario_social"><option value="NÃO">Não</option><option value="SIM">Sim</option></select></div>
+                    <div class="form-group"><label for="modal-pcd">Aluno PCD?</label><select id="modal-pcd" name="pcd_status"><option value="NÃO">Não</option><option value="SIM">Sim</option></select></div>
+                    <div class="form-group" id="modal-pcd-details-group" style="display: none;"><label for="modal-pcd_details">Tipo de Deficiência</label><select id="modal-pcd_details" name="pcd_details"><option value="Física (cadeirante)">Física (cadeirante)</option><option value="Física (paralisia cerebral)">Física (paralisia cerebral)</option><option value="Física (outros)">Física (outros)</option><option value="Intelectual">Intelectual</option><option value="Multipla">Multipla</option><option value="Surdo/cegueira">Surdo/cegueira</option><option value="Síndrome de Asperger">Síndrome de Asperger</option><option value="Síndrome de Heller">Síndrome de Heller</option><option value="Síndrome de Rett">Síndrome de Rett</option><option value="Surdez leve ou moderada">Surdez leve ou moderada</option><option value="Surdez severa ou profunda">Surdez severa ou profunda</option><option value="Autismo">Autismo</option></select></div>
+                    <div class="form-group"><label for="modal-transporte_escolar">Utiliza Transporte Escolar?</label><select id="modal-transporte_escolar" name="transporte_escolar"><option value="NÃO">Não</option><option value="SIM">Sim</option></select></div>
+                </div>
+                <div class="modal-actions"><button type="button" id="cancel-btn" class="cancel-button">Cancelar</button><button type="submit" class="action-button">Salvar Aluno</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="gestao_alunos.js"></script>
+</body>
+</html>

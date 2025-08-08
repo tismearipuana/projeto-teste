@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Avaliações</title>
+    <link rel="stylesheet" href="admin_style.css"> 
+</head>
+<body>
+    <header role="banner"><div class="header-content"><h1>Área de Gestão</h1><h2 id="page-title">Avaliações Cadastradas</h2><button class="back-button" onclick="window.location.href='/painel_gestao.html'"> Voltar ao Painel</button></div></header>
+    <main id="main-content" role="main">
+        <section class="management-section">
+            <div class="section-header">
+                <h3>Todas as Avaliações</h3>
+                <button id="add-avaliacao-btn" class="action-button">Criar Nova Avaliação</button>
+            </div>
+            <div id="avaliacoes-table-container"><p>Carregando lista de avaliações...</p></div>
+        </section>
+    </main>
+    <div id="avaliacao-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modal-title">Criar Nova Avaliação</h3>
+            <form id="avaliacao-form">
+                <div class="form-grid">
+                    <div class="form-group"><label for="nome_avaliacao">Nome da Avaliação *</label><input type="text" id="nome_avaliacao" name="nome_avaliacao" required></div>
+                    <div class="form-group"><label for="ano_aplicacao">Ano de Aplicação *</label><input type="number" id="ano_aplicacao" name="ano_aplicacao" required placeholder="Ex: 2025" min="2000" max="2100"></div>
+                    <div class="form-group"><label for="etapa_de_conhecimento">Área de Conhecimento *</label><select id="etapa_de_conhecimento" name="etapa_de_conhecimento" required><option value="" disabled selected>Selecione uma área</option><option value="Língua Portuguesa">Língua Portuguesa</option><option value="Leitura">Leitura</option><option value="Matemática">Matemática</option></select></div>
+                </div>
+                <hr style="margin: 1.5rem 0;">
+                <div class="form-group"><label for="escala-modelo-select">Usar um Modelo de Escala? (Opcional)</label><select id="escala-modelo-select"><option value="">-- Começar do zero --</option></select></div>
+                <h4 style="margin-top: 1.5rem;">Níveis de Desempenho</h4>
+                <div id="niveis-container"></div>
+                <button type="button" id="add-nivel-btn" class="add-nivel-button">+ Adicionar Nível</button>
+                <div class="modal-actions"><button type="button" id="cancel-btn" class="cancel-button">Cancelar</button><button type="submit" class="action-button">Salvar Avaliação</button></div>
+            </form>
+        </div>
+    </div>
+    <script src="gestao_avaliacoes.js"></script>
+</body>
+</html>
